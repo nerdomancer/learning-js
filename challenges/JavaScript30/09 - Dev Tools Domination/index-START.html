@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const p = document.querySelector('p');
+
+    function makeGreen() {      
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('Hello world.');
+    
+    // Interpolated
+    console.log('Hello I am a %s.', 'human');
+    
+    // Styled
+    console.log('This is a great text!', 'font-size:20px; background:red;');
+    
+    // warning!
+    console.warn('This is a warning!');
+    
+    // Error :|
+    console.error('This is an error!');
+    
+    // Info
+    console.info('This is an info.');
+
+    // Testing
+    console.assert( 1 === 1); // Won't fire since it is true
+    console.assert( 1 === 2);
+
+    // clearing
+    //console.clear();
+
+    // Viewing DOM Elements
+    console.log(p); // shows only the html element
+    console.dir(p); // shows all object tree
+    // on firefox these methods result the same
+
+    // Grouping together
+    // helpful when logging a bunch of details to keep them organized
+    
+    dogs.forEach(dog => {
+      // console.group(`${dog.name}`);
+      console.groupCollapsed(`${dog.name}`);
+      
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old.`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old.`);
+      
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('Selcuk');
+    console.count('Selcuk');
+    console.count('None');
+    console.count('None');
+    console.count('Selcuk');
+    console.count('Selcuk');
+
+    // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/nerdomancer')
+      .then(data => data.json())
+      .then(json => {
+        console.timeEnd('fetching data');
+        console.log(json);        
+      });
+
+  </script>
+</body>
+</html>
