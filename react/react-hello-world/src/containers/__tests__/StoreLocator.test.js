@@ -26,6 +26,16 @@ describe("StoreLocator", function() {
     });
   });
 
+  it("updates the state with result from the api", () => {
+    return mounted.instance().componentDidMount().then(() => {
+      expect(mounted.instance().state.shops.length).toBe(1);
+      expect(mounted.state()).toHaveProperty("shops", [{
+        location : "test location",
+        address : "test address"
+      }]);
+    });
+  });
+
   it("renders a Header", () => {
     let mountedHeader = mounted.find("Header");
     expect(mountedHeader.length).toBe(1);
