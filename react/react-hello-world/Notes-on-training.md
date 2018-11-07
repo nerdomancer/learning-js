@@ -38,3 +38,11 @@
 * Test the states
 * Test the events
 * Test edge cases
+
+## Snapshot testing
+
+* Complements conventional testing
+* Tests less clearly defined aspects
+* Tests rapidly changing parts of the code like css, styles
+* It is **not** for critical logic
+* It is **not** for understanding developer expectations

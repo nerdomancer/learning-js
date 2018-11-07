@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import StoreLocator from "../StoreLocator";
 import axios from "axios";
+import renderer from "react-test-renderer";
 
 describe("StoreLocator", function() {
   let mounted;
@@ -12,6 +13,11 @@ describe("StoreLocator", function() {
 
   it("renders without crashing", () => {
     let mounted = shallow(<StoreLocator />);
+  });
+
+  it("renders correctly", () => {
+    const tree = renderer.create(<StoreLocator />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
   
   it("calls axios.get in #componentDidMount", () => {
